@@ -1,1 +1,1 @@
-﻿
+﻿const autoFormat = 1
