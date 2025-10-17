@@ -1,0 +1,6 @@
+export default {
+  "src/**/*.{js,jsx,ts,tsx,css,html}": [
+    "prettier --write",
+    "eslint --fix"
+  ]
+};

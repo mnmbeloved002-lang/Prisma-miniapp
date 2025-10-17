@@ -1,0 +1,24 @@
+{
+  "name": "prisma-miniapp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write src",
+    "prepare": "husky",
+    "lint:ci": "eslint src --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+    "format:check": "prettier --check src"
+  },
+  "devDependencies": {
+    "eslint": "^9.37.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.4",
+    "prettier": "^3.6.2",
+    "vite": "^7.1.7"
+  }
+}
