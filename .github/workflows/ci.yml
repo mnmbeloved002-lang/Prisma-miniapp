@@ -1,0 +1,41 @@
+﻿name: CI
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+
+concurrency:
+  group: $\{{ github.workflow }}-$\{{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-lint:
+    name: build-and-lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install deps (npm ci)
+        run: npm ci
+
+      - name: ESLint (no warnings)
+        run: npm run lint -- --max-warnings=0
+
+      - name: Prettier check
+        run: npm run format:check
+
+      - name: Build (Vite)
+        run: npm run build
